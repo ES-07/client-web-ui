@@ -11,12 +11,18 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
+import { PropertyCardComponent } from './components/property-card/property-card.component';
+import { MainComponent } from './pages/main/main.component';
+import { PropertyComponent } from './pages/property/property.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    SideBarComponent
+    SideBarComponent,
+    PropertyCardComponent,
+    MainComponent,
+    PropertyComponent
   ],
   imports: [
     BrowserModule,
