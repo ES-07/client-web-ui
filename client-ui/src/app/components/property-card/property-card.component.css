@@ -1,0 +1,98 @@
+/* Font */
+@import url('https://fonts.googleapis.com/css?family=Quicksand:400,700');
+
+/* Design */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+
+.main{
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+h1 {
+    margin-top: 2em;
+    font-size: 24px;
+    font-weight: 400;
+    text-align: center;
+}
+
+img {
+  height: auto;
+  max-width: 100%;
+  vertical-align: middle;
+}
+
+
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.cards_item {
+  display: flex;
+  padding: 1rem;
+}
+
+@media (min-width: 40rem) {
+  .cards_item {
+    width: 30%;
+  }
+}
+
+@media (min-width: 56rem) {
+  .cards_item {
+    width: 20%;
+  }
+}
+
+.card {
+  background-color: #f5f5f5;
+  border-radius: 0.5rem;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: 0.5s; 
+}
+
+.card:hover {
+    cursor: pointer;
+    transform: scale(1.1); 
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.card_content {
+  padding: 1rem;
+  margin-bottom: 1em;
+}
+
+.card_title {
+  color: #000;
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: capitalize;
+  margin: 0px;
+  text-align: center;
+}
+
+.card_image {
+    margin-top: 3em;
+    margin-bottom: 2em;
+}
+
+.responsive {
+    height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%;
+}
