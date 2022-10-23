@@ -1,7 +1,23 @@
-.responsive {
-    height: auto;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 40%;
+#box {
+    background-color: #fff;
+    border-radius: 0.5rem;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    height: 40vh;
+}
+
+#big_box {
+    background-color: #fff;
+    border-radius: 0.5rem;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    height: 40vh;
+    width: calc(100% - 60px);
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0 10px;
 }

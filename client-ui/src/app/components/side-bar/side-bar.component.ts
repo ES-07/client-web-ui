@@ -42,4 +42,9 @@ export class SideBarComponent {
         }
       });
   }
+
+  redirect() {
+    localStorage.setItem("logged_in","false");
+    window.location.href = "/login"
+  }
 }
