@@ -10,7 +10,6 @@ on:
     - develop
 jobs:
   build:
-    # using Ubuntu
     runs-on: ubuntu-latest
     defaults:
       run:
