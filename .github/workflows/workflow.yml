@@ -38,11 +38,17 @@ jobs:
         #run: npm run test:ci
       #- name: Test coverage
         #run: npm run test:ci:cov
-      - name: Deploy to my EC2 instance
-        uses: easingthemes/ssh-deploy@v2.1.5
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
         with:
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY}}
-          SOURCE: "dist/angular-demo/"
-          REMOTE_HOST: "ec2-remote-host"
-          REMOTE_USER: "ubuntu"
-          TARGET: "/var/www/html/angular-demo/"
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: eu-west-3
+      - name: Create CodeDeploy Deployment
+        id: deploy
+        run: |
+          aws deploy create-deployment \
+            --application-name management-web-ui \
+            --deployment-group-name ManagementWebUIDeployment \
+            --deployment-config-name CodeDeployDefault.OneAtATime \
+            --github-location repository=${{ github.repository }},commitId=${{ github.sha }}
