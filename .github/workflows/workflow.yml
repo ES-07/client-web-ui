@@ -27,7 +27,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
       - name: CD
-        run: cd client-ui
+        run: cd ./client-ui
       - name: NPM Install
         run: npm install
       - name: NPM Install Angular
