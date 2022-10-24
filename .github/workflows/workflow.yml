@@ -30,6 +30,8 @@ jobs:
         run: cd client-ui | npm install
       - name: NPM Install Angular
         run: npm install -g @angular/cli > /dev/null
+      - name: LS
+        run: ls -a
       - name: NPM build Angular Production
         run: npm run build:prod
       - name: Test
