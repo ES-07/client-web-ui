@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Property } from 'src/app/classes/Property';
 
 @Component({
   selector: 'app-main',
@@ -11,5 +12,10 @@ export class MainComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  properties : Property[] = [
+    {id: 1, name:'My House'},
+    {id: 2, name:'Bakery Rodriguez'},
+  ];
 
 }

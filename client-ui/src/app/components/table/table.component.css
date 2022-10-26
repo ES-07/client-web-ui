@@ -1,0 +1,27 @@
+table {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    min-width: 500px;
+    background-color: transparent;
+}
+
+th.mat-header-cell {
+    text-align: left;
+    max-width: 300px;
+}
+
+td.mat-cell {
+    text-align: left;
+    max-width: 300px;
+    
+}
+
+button.mat-icon-button {
+    border: none;
+    outline: none;
+}
+
+mat-paginator{
+    background-color: transparent;
+}

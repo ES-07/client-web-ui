@@ -1,1 +1,43 @@
-<p>property works!</p>
+
+<div class="container-fluid text-center">
+
+    <div class="row justify-content-around">
+        <div class="col-lg-5" id="box">
+            <h1>Property Informations</h1>
+        </div>
+
+        <div class="col-lg-6" id="box">
+            <h1>Intrusions</h1>
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <app-table [displayedColumns]="displayedColumns_intrusion" [dataSource]="dataSource_intrusion" [pageSizeOptions]="[4]"></app-table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row justify-content-around" style="margin-top: 3em;">
+        <div id="big_box">
+            
+            <h1>Devices</h1>
+            <div class="row justify-content-around">
+                <div class="col-lg-7">
+                    <app-table [displayedColumns_device]="displayedColumns_device" [dataSource_device]="dataSource_device" [pageSizeOptions]="[4]"></app-table>
+                </div>
+
+                <div class="col-lg-4">
+                    <form action="/action_page.php">
+                        <label for="fname">sensor/camera</label>
+                        <input type="text" id="fname" name="fname"><br><br>
+                        <label for="lname">quantity</label>
+                        <input type="text" id="lname" name="lname"><br><br>
+                        <button type="button" class="btn btn-success">Add device</button>
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</div>

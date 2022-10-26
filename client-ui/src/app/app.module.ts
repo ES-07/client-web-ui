@@ -15,6 +15,15 @@ import { PropertyCardComponent } from './components/property-card/property-card.
 import { MainComponent } from './pages/main/main.component';
 import { PropertyComponent } from './pages/property/property.component';
 import { LoginComponent } from './pages/login/login.component';
+import { TableComponent } from './components/table/table.component';
+
+import { MatTableModule } from '@angular/material/table'
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { MatInputModule } from '@angular/material/input';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { IntrusionComponent } from './pages/intrusion/intrusion.component';
 
 
 @NgModule({
@@ -24,7 +33,9 @@ import { LoginComponent } from './pages/login/login.component';
     PropertyCardComponent,
     MainComponent,
     PropertyComponent,
-    LoginComponent
+    LoginComponent,
+    TableComponent,
+    IntrusionComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,8 +48,19 @@ import { LoginComponent } from './pages/login/login.component';
     MatButtonModule,
     MatIconModule,
     MatDividerModule,
+    MatTableModule,
+    MatFormFieldModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatInputModule,
+    FlexLayoutModule
+  ],
+  exports: [
+    MatSortModule,
+    MatInputModule,
+    MatFormFieldModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }
