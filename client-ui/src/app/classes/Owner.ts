@@ -1,6 +1,14 @@
+import { Property } from "./Property";
+
 export interface Owner{
     id: string;
     name: string;
-    bday: string;
+    birthday: string;
     address: string;
+    email: string;
+    hashed_password: string;
+    cellphone: number;
+    contract_date: string;
+    notification_type: string;
+    buildings: Property[];
 }
