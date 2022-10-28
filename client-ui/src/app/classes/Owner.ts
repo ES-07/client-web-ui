@@ -7,7 +7,7 @@ export interface Owner{
     address: string;
     email: string;
     hashed_password: string;
-    cellphone: number;
+    cellphone: string;
     contract_date: string;
     notification_type: string;
     buildings: Property[];
