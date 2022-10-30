@@ -25,6 +25,8 @@ import { MatInputModule } from '@angular/material/input';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { IntrusionComponent } from './pages/intrusion/intrusion.component';
 
+import { HttpClientModule } from '@angular/common/http'
+
 
 @NgModule({
   declarations: [
@@ -53,7 +55,8 @@ import { IntrusionComponent } from './pages/intrusion/intrusion.component';
     MatPaginatorModule,
     MatSortModule,
     MatInputModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    HttpClientModule,
   ],
   exports: [
     MatSortModule,
