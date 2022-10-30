@@ -1,3 +1,4 @@
+import { ProfileComponent } from './pages/profile/profile.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { IntrusionComponent } from './pages/intrusion/intrusion.component';
@@ -17,8 +18,10 @@ const routes: Routes = [
   },
 
   { path: 'intrusion', component: IntrusionComponent },
+  { path: 'profile', component: ProfileComponent },
 
   { path: 'login', component: LoginComponent },
+  
   /* { path: '', redirectTo: '/login', pathMatch: 'full'}, */
   
 ];

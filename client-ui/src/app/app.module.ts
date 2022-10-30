@@ -25,6 +25,8 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatInputModule } from '@angular/material/input';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { IntrusionComponent } from './pages/intrusion/intrusion.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ProfileComponent } from './pages/profile/profile.component'
 
 
 @NgModule({
@@ -37,6 +39,7 @@ import { IntrusionComponent } from './pages/intrusion/intrusion.component';
     LoginComponent,
     TableComponent,
     IntrusionComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -55,6 +58,7 @@ import { IntrusionComponent } from './pages/intrusion/intrusion.component';
     MatPaginatorModule,
     MatSortModule,
     MatInputModule,
+    HttpClientModule,
     FlexLayoutModule
   ],
   exports: [
