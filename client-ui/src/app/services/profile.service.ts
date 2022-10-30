@@ -14,7 +14,7 @@ export class ProfileService{
 
   getOwnerData(){
     console.log("no servico")
-    return this.http.get<Owner>(this.BASE_URL+'/'+'19',{ 
+    return this.http.get<Owner>(this.BASE_URL+'/'+'20',{ 
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
       }),
