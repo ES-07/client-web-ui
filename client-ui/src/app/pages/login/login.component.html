@@ -13,13 +13,15 @@
       <!-- Login Form -->
       <form autocomplete="off">
         <input type="text" id="email" class="fadeIn second" name="login" placeholder="email">
-        <input type="text" id="password" class="fadeIn third" name="login" placeholder="password">
-        <input type="button" class="fadeIn fourth" value="Log In" (click)="redirect()">
+        <input type="password" id="password" class="fadeIn third" name="login" placeholder="password">
+        <input type="button" class="fadeIn fourth" value="Log In" (click)="logIn()">
       </form>
-  
+
+      <p *ngIf="login_failed" class="input_error">Please enter a correct email or password.</p>
+
       <!-- Remind Passowrd -->
       <div id="formFooter">
-        <a class="underlineHover" href="#">Forgot Password?</a>
+        <!-- <a class="underlineHover" href="#">Forgot Password?</a> -->
       </div>
   
     </div>
@@ -39,10 +41,21 @@
         <form autocomplete="off">
             <input type="text" id="name" class="fadeIn second" name="name" placeholder="name">
             <input type="text" id="email" class="fadeIn second" name="login" placeholder="email">
-            <input type="text" id="password" class="fadeIn third" name="login" placeholder="password">
-            <input type="text" id="password" class="fadeIn third" name="login" placeholder="repeat password">
-            <input type="button" class="fadeIn fourth" value="Sign up" (click)="redirect()">
+            <input type="text" id="address" class="fadeIn second" name="login" placeholder="address">
+            <input type="text" id="cellphone" class="fadeIn second" name="login" placeholder="phone number">
+            <input type="text" id="birthday" class="fadeIn second" name="login" placeholder="birthday" onfocus="(this.type='date')" onBlur="(this.type='text')">
+            <input type="password" id="password" class="fadeIn third" name="login" placeholder="password">
+            <input type="password" id="password_again" class="fadeIn third" name="login" placeholder="repeat password">
+            <input type="button" class="fadeIn fourth" value="Sign up" (click)="register()">
         </form>
+
+        <p *ngIf="no_match_pass" class="input_error">Passwords doesn't match</p>
+        <p *ngIf="blank_space" class="input_error">Please, fill in all the fields</p>
+
+        <!-- Remind Passowrd -->
+        <div id="formFooter">
+          <!-- <a class="underlineHover" href="#">Forgot Password?</a> -->
+        </div>
     
       </div>
 </div>

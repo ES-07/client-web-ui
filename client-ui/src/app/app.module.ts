@@ -28,6 +28,8 @@ import { IntrusionComponent } from './pages/intrusion/intrusion.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ProfileComponent } from './pages/profile/profile.component'
 
+import { HttpClientModule } from '@angular/common/http'
+
 
 @NgModule({
   declarations: [
@@ -58,8 +60,8 @@ import { ProfileComponent } from './pages/profile/profile.component'
     MatPaginatorModule,
     MatSortModule,
     MatInputModule,
+    FlexLayoutModule,
     HttpClientModule,
-    FlexLayoutModule
   ],
   exports: [
     MatSortModule,

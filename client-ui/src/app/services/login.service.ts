@@ -16,15 +16,15 @@ export class LoginService {
     let str = '{"email": "'+ email +'", "password": "'+ password +'"}';
     let json = JSON.parse(str);
 
-    return this.http.post(environment.SITES_API + "/login", json)
+    return this.http.post(environment.SITES_API + "/owners/login", json)
   }
 
   
   register(owner: Owner) {
-    let params = new HttpParams();
-    /* params = params.append('product', product_id);
-    params = params.append('amount', amount); */
-    return this.http.post(environment.SITES_API + "/owners",  {}, { params });
+    let str = '{"name": "'+ owner.name +'", "email": "'+ owner.email +'", "birthday": "'+ owner.birthday +'", "address": "'+ owner.address +'", "hashed_password": "'+ owner.hashed_password +'", "cellphone": "'+ owner.cellphone +'"}';
+    let json = JSON.parse(str);
+
+    return this.http.post(environment.SITES_API + "/owners", json);
   }
 
 }

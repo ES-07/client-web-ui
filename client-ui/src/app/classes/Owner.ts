@@ -1,7 +1,7 @@
 import { Property } from "./Property";
 
 export interface Owner{
-    id: string;
+    id: number;
     name: string;
     birthday: string;
     address: string;
