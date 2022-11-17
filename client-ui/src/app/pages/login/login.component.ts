@@ -49,7 +49,7 @@ export class LoginComponent implements OnInit {
         if (info[0] == 200) {
           localStorage.setItem("logged_in","true");
           console.log(info[1])
-          // window.location.href = "/"
+          window.location.href = "/"
           
 
         } else  if (info == 401) {
