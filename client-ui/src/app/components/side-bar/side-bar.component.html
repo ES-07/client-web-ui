@@ -3,18 +3,17 @@
       <mat-icon *ngIf="!sidenav.opened"> menu </mat-icon>
       <mat-icon *ngIf="sidenav.opened"> close </mat-icon>
     </button>
-
-    007
 </mat-toolbar>
 
 <mat-sidenav-container>
     <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
 
-        <img class="avatar mat-elevation-z8" src="../../../assets/img/teresa.jpg">
+        <div *ngIf="owner_name">
+            <img class="avatar mat-elevation-z8" src="../../../assets/img/default.jpg"/>
 
-
-        <h4 class="name">Teresa Silva</h4>
-        <p class="designation">Software Engineer</p>
+            <h4 class="name">{{owner_name}}</h4>
+            <p class="designation">Property Owner</p>
+        </div>
 
         <mat-divider></mat-divider>
 
@@ -24,19 +23,19 @@
         </button>
 
         <button mat-button class="menu-button" routerLink="/intrusion">
-            <mat-icon>person</mat-icon>
+            <mat-icon>notification_important</mat-icon>
             <span>Intrusions</span>
         </button>
 
         <button mat-button class="menu-button" routerLink="/profile">
-            <mat-icon>info</mat-icon>
+            <mat-icon>person</mat-icon>
             <span>Profile</span>
         </button>
 
         <mat-divider></mat-divider>
 
-        <button mat-button class="menu-button" (click)="redirect()">
-            <mat-icon>help</mat-icon>
+        <button mat-button class="menu-button" (click)="signOutWithCognito()">
+            <mat-icon>login</mat-icon>
             <span>Log Out</span>
         </button>
     </mat-sidenav>

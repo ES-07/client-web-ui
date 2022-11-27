@@ -1,6 +1,7 @@
 import { Owner } from './../../classes/Owner';
 import { Component, OnInit } from '@angular/core';
-import { ProfileService } from '../../services/profile.service';
+import { CognitoService } from 'src/app/services/cognito.service';
+import { OwnerService } from 'src/app/services/owner.service';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -8,29 +9,27 @@ import { ProfileService } from '../../services/profile.service';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor(
-    private service: ProfileService 
-
-  ) { }
-
   owner!:Owner
 
-  
+  constructor(private service: OwnerService, private cognito: CognitoService) { }
+ 
   ngOnInit(): void {
 
-    this.service.getOwnerData().subscribe((info) => {
+    var cognito_id = localStorage.getItem('cognito_id');
+    if (cognito_id == null) return
+
+    this.service.getOwnerByID(cognito_id).subscribe((info) => {
       this.owner = info;
-      console.log(this.owner);
-      if (this.owner.notification_type == "TXT_MSG"){
+
+      if (this.owner.notification_type == "TXT_MSG") {
         this.owner.notification_type = "Text Message"
       }
-      if (this.owner.notification_type == "VOICE_CALL"){
+
+      if (this.owner.notification_type == "VOICE_CALL") {
         this.owner.notification_type = "Voice Call"
       }
 
-    }); 
-
- 
+    });  
 
 }
 

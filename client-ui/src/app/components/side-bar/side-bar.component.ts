@@ -4,6 +4,9 @@ import { MatSidenav } from '@angular/material/sidenav';
 import { delay, filter } from 'rxjs/operators';
 import { NavigationEnd, Router } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { CognitoService } from 'src/app/services/cognito.service';
+import { OwnerService } from 'src/app/services/owner.service';
+import { Owner } from 'src/app/classes/Owner';
 
 @UntilDestroy()
 @Component({
@@ -14,8 +17,9 @@ import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 export class SideBarComponent {
   @ViewChild(MatSidenav)
   sidenav!: MatSidenav;
+  owner_name! : string;
 
-  constructor(private observer: BreakpointObserver, private router: Router) {}
+  constructor(private observer: BreakpointObserver, private router: Router, private service: CognitoService, private owner_service: OwnerService) {}
 
   ngAfterViewInit() {
     this.observer
@@ -41,10 +45,22 @@ export class SideBarComponent {
           this.sidenav.close();
         }
       });
+
+    this.getOwner();
   }
 
-  redirect() {
-    localStorage.setItem("logged_in","false");
-    window.location.href = "/login"
+
+  signOutWithCognito() {
+    this.service.signOut()
+    .then(() => {
+      this.router.navigate(['/login'])
+    })  
+  }
+
+  getOwner() {
+    this.service.getOwner()
+    .then((user: any) => {
+      this.owner_name = user.attributes.name
+    });
   }
 }

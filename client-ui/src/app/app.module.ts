@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -24,8 +25,9 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatInputModule } from '@angular/material/input';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { IntrusionComponent } from './pages/intrusion/intrusion.component';
-import { HttpClientModule } from '@angular/common/http';
 import { ProfileComponent } from './pages/profile/profile.component'
+import { CanActivateGuard } from './can-activate.guard';
+
 
 
 @NgModule({
@@ -42,6 +44,7 @@ import { ProfileComponent } from './pages/profile/profile.component'
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     BrowserModule,
     AppRoutingModule,
@@ -56,15 +59,15 @@ import { ProfileComponent } from './pages/profile/profile.component'
     MatPaginatorModule,
     MatSortModule,
     MatInputModule,
+    FlexLayoutModule,
     HttpClientModule,
-    FlexLayoutModule
   ],
   exports: [
     MatSortModule,
     MatInputModule,
     MatFormFieldModule
   ],
-  providers: [],
+  providers: [CanActivateGuard],
   bootstrap: [AppComponent],
 })
 export class AppModule { }
