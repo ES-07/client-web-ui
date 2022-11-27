@@ -11,4 +11,5 @@ export interface Owner{
     contract_date: string;
     notification_type: string;
     buildings: Property[];
+    cognito_id: string;
 }

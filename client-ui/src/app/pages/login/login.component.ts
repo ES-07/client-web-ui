@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { LoginService } from 'src/app/services/login.service';
 import { Owner } from 'src/app/classes/Owner';
+import { CognitoService } from 'src/app/services/cognito.service';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-login',
@@ -14,11 +15,13 @@ export class LoginComponent implements OnInit {
   login_failed = false
   no_match_pass = false
   blank_space = false
+  alertMessage: string = '';
+  code_validation: boolean = false;
+  owner! : Owner;
 
-  constructor(private router: Router, private service: LoginService) { }
+  constructor(private router: Router, private service: CognitoService, private register: LoginService) { }
 
   ngOnInit(): void {
-    localStorage.setItem("logged_in","false");
   }
 
   signUp() {
@@ -26,46 +29,39 @@ export class LoginComponent implements OnInit {
     this.login_failed = false
     this.no_match_pass = false
     this.blank_space = false
+    this.alertMessage = ""
   }
 
-  logIn() {
+  signInWithCognito() {
 
     let email = (<HTMLInputElement>document.getElementById("email")).value
     let password = (<HTMLInputElement>document.getElementById("password")).value
 
     if (email == "" || password == "") {
       this.login_failed = true
+      this.displayAlert("Please, enter your credentials")
       return
 
     } else {
       this.login_failed = false
     }
 
-    this.service.logIn(email, password).subscribe({
-      next: (info: any) => {
-        console.log("sucesso", info)
-        // localStorage.setItem('token', info["token"]);
-
-        if (info[0] == 200) {
-          localStorage.setItem("logged_in","true");
-          console.log(info[1])
-          window.location.href = "/"
-          
-
-        } else  if (info == 401) {
-          this.login_failed = true
-        }
-
-      }, 
-      error: (error) => {
-        console.log("[ERROR]", error);
-      } 
-    });
-   
+    this.service.signIn(email, password)
+    .then(() => {
+      console.log("bem vindo")
+      localStorage.setItem('saveOwner', String(false));
+      this.router.navigate(['/']);
+      window.location.href= "/"
+    })
+    .catch((error: any) => {
+      console.log(error.message)
+      this.displayAlert(error.message);
+    })
+  
   }
 
 
-  register() {
+  signUpWithCognito() {
     let name = (<HTMLInputElement>document.getElementById("name")).value
     let email = (<HTMLInputElement>document.getElementById("email")).value
     let address = (<HTMLInputElement>document.getElementById("address")).value
@@ -78,33 +74,69 @@ export class LoginComponent implements OnInit {
       this.blank_space = false
 
       if (password != password_again) {
-        this.no_match_pass = true
+        this.displayAlert("Passwords doesn't match, try again")
         return
   
       } else {
         this.no_match_pass = false
       }
 
-      const owner: Owner = {
+      this.owner = {
         id: 0,
         name: name,
         birthday: birthday,
         address: address,
-        email: email,
         hashed_password: password,
+        email: email,
         cellphone: cellphone,
         contract_date: "",
         notification_type: "",
         buildings: [],
+        cognito_id: "",
       };
 
-      this.service.register(owner).subscribe((info: any) => {
-        console.log(info)
-      });
+
+      this.service.signUp(this.owner)
+      .then(() => {
+        console.log("só falta validar")
+        this.code_validation = true
+      })
+      .catch((error: any) => {
+        this.displayAlert(error.message);
+      })
+      
 
     } else {
-      this.blank_space = true
+      this.displayAlert("Missing required information")
     }
 
+  }
+
+  public confirmSignUp(): void {
+    let code = (<HTMLInputElement>document.getElementById("code")).value
+    this.service.confirmSignUp(this.owner, code)
+    .then(() => {
+
+      this.service.signIn(this.owner.email, this.owner.hashed_password)
+      .then(() => {
+        console.log("bem vindo")
+        localStorage.setItem('saveOwner', String(true));
+        this.router.navigate(['/']);
+        window.location.href= "/"
+      })
+      .catch((error: any) => {
+        console.log(error.message)
+        this.displayAlert(error.message);
+      })
+
+
+    }).catch((error: any) => {
+      console.log("ERRO", error)
+    });
+  }
+
+
+  private displayAlert(message: string) {
+    this.alertMessage = message;
   }
 }

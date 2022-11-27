@@ -26,6 +26,7 @@ import { MatInputModule } from '@angular/material/input';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { IntrusionComponent } from './pages/intrusion/intrusion.component';
 import { ProfileComponent } from './pages/profile/profile.component'
+import { CanActivateGuard } from './can-activate.guard';
 
 
 
@@ -66,7 +67,7 @@ import { ProfileComponent } from './pages/profile/profile.component'
     MatInputModule,
     MatFormFieldModule
   ],
-  providers: [],
+  providers: [CanActivateGuard],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

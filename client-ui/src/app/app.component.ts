@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { CognitoService } from './services/cognito.service';
 
 @Component({
   selector: 'app-root',
@@ -7,14 +8,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title = 'client-ui';
-  logged_in!: boolean;
 
-  constructor(private router: Router) {
-    this.logged_in = (localStorage.getItem("logged_in") == "true");
-  }
+  constructor() {}
 
-  ngOnInit(): void {
-    this.logged_in = (localStorage.getItem("logged_in") == "true");
-  }
+  ngOnInit(): void {}
+  
 }

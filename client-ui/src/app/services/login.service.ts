@@ -9,19 +9,10 @@ import { Owner } from '../classes/Owner';
 })
 export class LoginService {
   
-
   constructor(private http: HttpClient) {}
-
-  logIn(email: string, password: string) {
-    let str = '{"email": "'+ email +'", "password": "'+ password +'"}';
-    let json = JSON.parse(str);
-
-    return this.http.post(environment.SITES_API + "/owners/login", json)
-  }
-
   
   register(owner: Owner) {
-    let str = '{"name": "'+ owner.name +'", "email": "'+ owner.email +'", "birthday": "'+ owner.birthday +'", "address": "'+ owner.address +'", "hashed_password": "'+ owner.hashed_password +'", "cellphone": "'+ owner.cellphone +'"}';
+    let str = '{"name": "'+ owner.name +'", "email": "'+ owner.email +'", "birthday": "'+ owner.birthday +'", "address": "'+ owner.address +'", "hashed_password": "'+ owner.hashed_password +'", "cellphone": "'+ owner.cellphone +'", "cognito_id": "'+ owner.cognito_id +'"}';
     let json = JSON.parse(str);
 
     return this.http.post(environment.SITES_API + "/owners", json);
