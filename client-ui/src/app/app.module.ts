@@ -29,6 +29,7 @@ import { ProfileComponent } from './pages/profile/profile.component'
 import { CanActivateGuard } from './can-activate.guard';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
