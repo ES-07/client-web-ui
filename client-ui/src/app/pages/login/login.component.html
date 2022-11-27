@@ -14,10 +14,11 @@
       <form autocomplete="off">
         <input type="text" id="email" class="fadeIn second" name="login" placeholder="email">
         <input type="password" id="password" class="fadeIn third" name="login" placeholder="password">
-        <input type="button" class="fadeIn fourth" value="Log In" (click)="logIn()">
+        <input type="button" class="fadeIn fourth" value="Log In" (click)="signInWithCognito()">
       </form>
 
-      <p *ngIf="login_failed" class="input_error">Please enter a correct email or password.</p>
+      <!-- <p *ngIf="login_failed" class="input_error">Please enter a correct email or password.</p> -->
+      <p id="alert" class="input_error" (change)="alertMessage">{{alertMessage}}</p>
 
       <!-- Remind Passowrd -->
       <div id="formFooter">
@@ -39,18 +40,26 @@
     
         <!-- Login Form -->
         <form autocomplete="off">
-            <input type="text" id="name" class="fadeIn second" name="name" placeholder="name">
-            <input type="text" id="email" class="fadeIn second" name="login" placeholder="email">
-            <input type="text" id="address" class="fadeIn second" name="login" placeholder="address">
-            <input type="text" id="cellphone" class="fadeIn second" name="login" placeholder="phone number">
-            <input type="text" id="birthday" class="fadeIn second" name="login" placeholder="birthday" onfocus="(this.type='date')" onBlur="(this.type='text')">
-            <input type="password" id="password" class="fadeIn third" name="login" placeholder="password">
-            <input type="password" id="password_again" class="fadeIn third" name="login" placeholder="repeat password">
-            <input type="button" class="fadeIn fourth" value="Sign up" (click)="register()">
+            <div *ngIf="!code_validation">
+              <input type="text" id="name" class="fadeIn second" name="name" placeholder="name">
+              <input type="text" id="email" class="fadeIn second" name="login" placeholder="email">
+              <input type="text" id="address" class="fadeIn second" name="login" placeholder="address">
+              <input type="text" id="cellphone" class="fadeIn second" name="login" placeholder="phone number">
+              <input type="text" id="birthday" class="fadeIn second" name="login" placeholder="birthday" onfocus="(this.type='date')" onBlur="(this.type='text')">
+              <input type="password" id="password" class="fadeIn third" name="login" placeholder="password">
+              <input type="password" id="password_again" class="fadeIn third" name="login" placeholder="repeat password">
+              <input type="button" class="fadeIn fourth" value="Sign up" (click)="signUpWithCognito()">
+            </div>
+
+            <div *ngIf="code_validation">
+              <input type="text" id="code" class="fadeIn second" name="code" placeholder="Enter the verification code">
+              <input type="button" class="fadeIn fourth" value="Validate" (click)="confirmSignUp()">
+            </div>
         </form>
 
-        <p *ngIf="no_match_pass" class="input_error">Passwords doesn't match</p>
+        
         <p *ngIf="blank_space" class="input_error">Please, fill in all the fields</p>
+        <p id="alert" class="input_error" >{{alertMessage}}</p>
 
         <!-- Remind Passowrd -->
         <div id="formFooter">
