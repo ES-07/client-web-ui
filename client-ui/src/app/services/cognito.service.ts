@@ -3,7 +3,8 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Device } from '../classes/Device';
-import { Amplify, Auth } from 'aws-amplify';
+import Amplify from "aws-amplify";
+import { Auth } from 'aws-amplify';
 import { Owner } from '../classes/Owner';
 import { Router } from '@angular/router';
 
