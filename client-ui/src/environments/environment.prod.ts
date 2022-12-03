@@ -1,5 +1,6 @@
 export const environment = {
   production: true,
+  SITES_API: 'http://localhost:8002',
   cognito: {
     region : 'eu-west-3',
     userPoolId : 'eu-west-3_jf78B1lET',
