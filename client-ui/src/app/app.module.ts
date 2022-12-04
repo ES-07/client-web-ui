@@ -27,6 +27,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { IntrusionComponent } from './pages/intrusion/intrusion.component';
 import { ProfileComponent } from './pages/profile/profile.component'
 import { CanActivateGuard } from './can-activate.guard';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 
 
@@ -61,6 +63,11 @@ import { CanActivateGuard } from './can-activate.guard';
     MatInputModule,
     FlexLayoutModule,
     HttpClientModule,
+    MatProgressSpinnerModule,
+    ReactiveFormsModule,
+    FormsModule
+
+
   ],
   exports: [
     MatSortModule,
