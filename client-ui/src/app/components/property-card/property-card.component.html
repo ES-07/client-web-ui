@@ -18,39 +18,5 @@
             </div>
         </li>
 
-        <li class="cards_item">
-            <div class="card" (click)="add()">
-
-                <div class="card_image">
-                    <img class="responsive" src="../../../assets/img/add_property.png">
-                </div>
-
-                <div class="card_content">
-                    <h2 class="card_title">Add Property</h2>
-                </div>
-                
-            </div>
-        </li>
-
     </ul>
 </div>
-
-
-
-<ng-template #content let-modal style="z-index: 1000;">
-	<div class="modal-header">
-		<h4 class="modal-title">Modal title</h4>
-		<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
-	</div>
-	<div class="modal-body">
-		<p>add a new property (se o modal deixar pá)</p>
-	</div>
-	<div class="modal-footer">
-		<button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
-	</div>
-</ng-template>
-
-
-<button class="btn btn-outline-primary mb-2 me-2" id ="modal_button" (click)="openVerticallyCentered(content)" style="visibility: hidden;">
-	Modal vertically centered
-</button>
