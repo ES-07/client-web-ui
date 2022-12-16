@@ -73,10 +73,7 @@
 
         <div class="row" *ngIf="!editMode">
             <div class="col-sm-6">
-                <p> <strong> Notification type </strong> </p>
-            </div>
-            <div class="col-sm-5">
-                <p class="text-muted mb-0">{{owner.notification_type}}</p>
+                <p> <strong> Notification type <span style="margin-left: 5em;" class="badge badge-warning"> Very soon :)</span></strong> </p>
             </div>
         </div>
 
@@ -88,9 +85,7 @@
             <div class="col-sm-5">
                 <select class="form-control" id="notification_type" formControlName="notification_type" >
                     <option  disabled> Select Notification type</option>
-                    <option> Text Message </option>
-                    <option> Voice Call </option>
-                    <option> Email </option>
+                    
                   </select>
             </div>
         </div>
