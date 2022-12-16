@@ -15,8 +15,4 @@ export class IntrusionService {
         return this.http.get<Intrusion[]>(environment.SITES_API + "/intrusions");
     }
 
-    getIntrusionsByOwnerID(id: number) : Observable<Intrusion[]> {
-        return this.http.get<Intrusion[]>(environment.SITES_API + "/intrusions/owner/"+ id);
-    }
-
 }

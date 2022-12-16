@@ -3,11 +3,6 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { Device } from 'src/app/classes/Device';
 import { Intrusion } from 'src/app/classes/Intrusion';
-import { Property } from 'src/app/classes/Property';
-import { DeviceService } from 'src/app/services/device.service';
-import { IntrusionService } from 'src/app/services/intrusion.service';
-import { PropertyService } from 'src/app/services/property.service';
-
 
 @Component({
   selector: 'app-property',
@@ -22,13 +17,8 @@ export class PropertyComponent implements OnInit {
   public displayedColumns_device: string[] = []
   public dataSource_device= new MatTableDataSource<Device>();
 
-  public properties = new Map<number, Property>();
-  public devices = new Map<number, Device>();
 
-  public property! : Property;
-
-
-  constructor(private router: Router, private service: IntrusionService,   private propertyService : PropertyService, private deviceService : DeviceService) { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
 
@@ -36,58 +26,27 @@ export class PropertyComponent implements OnInit {
 
     var property_id =  +this.router.url.split("/").slice(-1)[0]
 
-    this.getProperties(property_id);
-    this.getDevices();
+    /* if (property_id == 1) {
+      this.dataSource_intrusion.data = [ {id: "1", property: "My house", timestamp: "16/08/2001", device: "camera", video:""}, 
+      {id: "2", property: "My house", timestamp: "29/04/2001", device: "camera", video:""},
+      {id: "4", property: "My house", timestamp: "desculpa ricardo", device: "camera", video:""}]
 
-    var string_id = localStorage.getItem('owner')
-    var id = string_id == null ? 0 : +string_id 
-
-    this.service.getIntrusionsByOwnerID(id).subscribe(data => {
-      var lst : Intrusion[] = []
-      var all_intrusions : Intrusion[] = data
-
-      all_intrusions.forEach((e) => {
-        if (e.building_id == property_id) lst.push(e)
-      })
-
-      this.dataSource_intrusion.data = lst
-
-      this.dataSource_intrusion.data.forEach(element => {
-        element.building_name = this.properties.get(element.building_id)!.name;
-        element.device_type = this.devices.get(element.device_id)!.type;
-      });
-    })
+    } else if (property_id == 2) {
+      this.dataSource_intrusion.data = [{id: "3", property: "Bakery Rodriguez", timestamp: "31/08/2001", device: "sensor", video:""},
+      {id: "5", property: "Bakery Rodriguez", timestamp: "07/08/2001", device: "camera", video:""},
+      {id: "6", property: "Bakery Rodriguez", timestamp: "18/08/2001", device: "sensor", video:""}]
+    } */
 
 
-    this.displayedColumns_device = ['Property', 'Device', 'Specifications', 'Status'];
-
-    this.deviceService.getDevicesByBuildingID(id).subscribe(data => {
-      this.dataSource_device.data = data
-
-      this.dataSource_device.data.forEach(element => {
-        element.building_name = this.properties.get(element.building_id)!.name;
-      });
-    })
-
-    
-  }
+    this.displayedColumns_device = ['Property', 'Device', 'Date', 'Status'];
+    /* if (property_id == 1) {
+      this.dataSource_device.data = [ {id: "1", status: "on", date: "16/08/2001", type: "camera",  property: "My house"}, 
+      {id: "2", status: "on", date: "29/04/2001", type: "sensor",  property: "My house"}]
 
 
-  getProperties(id: number) {
-    this.propertyService.getAllProperties().subscribe(data => {
-      data.forEach(element => {
-        this.properties.set(element.id, element);
-        if (id == element.id) {this.property = element }
-      });
-    })
-  }
-
-  getDevices() {
-    this.deviceService.getAllDevices().subscribe(data => {
-      data.forEach(element => {
-        this.devices.set(element.id, element);
-      });
-    })
+    } else if (property_id == 2) {
+      this.dataSource_device.data = [{id: "4", status: "off", date: "23/01/2001", type: "camera",  property: "Bakery Rodriguez"}]
+    } */
   }
 
 }

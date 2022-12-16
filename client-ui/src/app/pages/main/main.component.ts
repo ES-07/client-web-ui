@@ -5,7 +5,6 @@ import { Owner } from 'src/app/classes/Owner';
 import { Property } from 'src/app/classes/Property';
 import { CognitoService } from 'src/app/services/cognito.service';
 import { LoginService } from 'src/app/services/login.service';
-import { OwnerService } from 'src/app/services/owner.service';
 
 @Component({
   selector: 'app-main',
@@ -15,10 +14,8 @@ import { OwnerService } from 'src/app/services/owner.service';
 export class MainComponent implements OnInit {
 
   owner!: Owner;
-  properties! : Property[]
 
-
-  constructor(private router: Router, private service: CognitoService, private register: LoginService, private owner_service: OwnerService) { }
+  constructor(private router: Router, private service: CognitoService, private register: LoginService) { }
 
   ngOnInit(): void {
     var saveOwner = localStorage.getItem('saveOwner');
@@ -50,20 +47,16 @@ export class MainComponent implements OnInit {
             localStorage.setItem('saveOwner', String(false))
           })
         }
-
-        this.owner_service.getOwnerByID(this.owner.cognito_id)
-        .subscribe((info) => {
-          localStorage.setItem('owner', String(info.id))
-        });
-
-
-        this.owner_service.getPropertiesByOwnerID(this.owner.cognito_id)
-        .subscribe((info) => {
-          this.properties = info
-        })
       }
     });
 
   }
+
+  properties : Property[] = [
+    {id: 1, name:'My House'},
+    {id: 2, name:'Bakery Rodriguez'},
+  ];
+
+
 
 }

@@ -28,7 +28,7 @@ import { IntrusionComponent } from './pages/intrusion/intrusion.component';
 import { ProfileComponent } from './pages/profile/profile.component'
 import { CanActivateGuard } from './can-activate.guard';
 
-import { MatSlideToggleModule } from '@angular/material/slide-toggle'
+
 
 @NgModule({
   declarations: [
@@ -61,7 +61,6 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle'
     MatInputModule,
     FlexLayoutModule,
     HttpClientModule,
-    MatSlideToggleModule
   ],
   exports: [
     MatSortModule,
