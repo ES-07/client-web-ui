@@ -6,6 +6,7 @@ import { Device } from 'src/app/classes/Device';
 import { Intrusion } from 'src/app/classes/Intrusion';
 import * as AWS from 'aws-sdk';
 import { Buffer } from 'node:buffer';
+import { ThemePalette } from '@angular/material/core';
 
 
 
@@ -18,6 +19,8 @@ import { Buffer } from 'node:buffer';
   styleUrls: ['./table.component.css']
 })
 export class TableComponent implements OnInit {
+  color: ThemePalette = 'primary';
+
   @Input() displayedColumns! : any;
   @Input() dataSource! : MatTableDataSource<Intrusion>;
 

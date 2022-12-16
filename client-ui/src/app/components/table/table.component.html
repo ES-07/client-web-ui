@@ -28,8 +28,8 @@
         <ng-container matColumnDef="download">
             <th mat-header-cell *matHeaderCellDef> Download </th>
             <td mat-cell *matCellDef="let element">
-            <button mat-icon-button color="accent" (click)="downloadVideo()">
-                <mat-icon class="mat-18">system_update</mat-icon>
+            <button mat-icon-button (click)="downloadVideo()">
+                <button type="button" class="btn btn-light btn-sm"> <mat-icon>cloud_download</mat-icon> </button>
             </button>
             </td>
         </ng-container>
@@ -53,7 +53,7 @@
 
         <ng-container matColumnDef="Property">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Property </th>
-            <td mat-cell *matCellDef="let element"> {{element.property}} </td>
+            <td mat-cell *matCellDef="let element"> {{element.building_name}} </td>
         </ng-container>
 
         <ng-container matColumnDef="Device">
@@ -61,14 +61,19 @@
             <td mat-cell *matCellDef="let element"> {{element.type}} </td>
         </ng-container>
 
-        <ng-container matColumnDef="Date">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Date </th>
-            <td mat-cell *matCellDef="let element"> {{element.date }} </td>
+        <ng-container matColumnDef="Specifications">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Specifications </th>
+            <td mat-cell *matCellDef="let element"> {{element.specifications }} </td>
         </ng-container>
 
         <ng-container matColumnDef="Status">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
-            <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+            <td mat-cell *matCellDef="let element"> 
+
+                <mat-slide-toggle *ngIf="element.state == 'ON'"[color]="color" [checked]="true" [disabled]="true"></mat-slide-toggle>
+                <mat-slide-toggle *ngIf="element.state == 'OFF'"[color]="color" [checked]="true" [disabled]="true"></mat-slide-toggle>
+
+            </td>
         </ng-container>
 
 
