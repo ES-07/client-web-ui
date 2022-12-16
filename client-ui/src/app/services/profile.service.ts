@@ -9,12 +9,10 @@ import { environment } from 'src/environments/environment';
 })
 export class ProfileService{
   
-  private BASE_URL = 'http://localhost:8002/owners';
-
   constructor(private http: HttpClient) { }
 
   getOwnerData(id: string)  : Observable<Owner> {
-    return this.http.get<Owner>(environment.SITES_API +'owners/'+ id);
+    return this.http.get<Owner>(environment.SITES_API +'owners/cognito/'+ id);
   }
   
 }

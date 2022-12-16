@@ -30,7 +30,7 @@ import { CanActivateGuard } from './can-activate.guard';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
-
+import { MatSlideToggleModule } from '@angular/material/slide-toggle'
 
 @NgModule({
   declarations: [
@@ -65,9 +65,10 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     HttpClientModule,
     MatProgressSpinnerModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
 
 
+    MatSlideToggleModule
   ],
   exports: [
     MatSortModule,
