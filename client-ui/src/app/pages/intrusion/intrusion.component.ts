@@ -17,6 +17,7 @@ export class IntrusionComponent implements OnInit {
   public displayedColumns: string[] = []
   public dataSource= new MatTableDataSource<Intrusion>();
   public pageSizeOptions: number[] = []
+
   public properties = new Map<number, Property>();
   public devices = new Map<number, Device>();
 
@@ -27,14 +28,6 @@ export class IntrusionComponent implements OnInit {
 
   ngOnInit(): void {
     this.displayedColumns = ['Property', 'Timestamp', 'Device', 'download'];
-
-    /* this.dataSource.data = [ {id: "1", property: "My house", timestamp: "16/08/2001", device: "camera", video:""}, 
-    {id: "2", property: "My house", timestamp: "29/04/2001", device: "camera", video:""},
-    {id: "3", property: "Bakery Rodriguez", timestamp: "31/08/2001", device: "sensor", video:""},
-    {id: "4", property: "My house", timestamp: "23/01/2001", device: "camera", video:""},
-    {id: "5", property: "Bakery Rodriguez", timestamp: "07/08/2001", device: "camera", video:""},
-    {id: "6", property: "Bakery Rodriguez", timestamp: "18/08/2001", device: "sensor", video:""}] */
-
     
     this.getIntrusions();
     
@@ -45,7 +38,11 @@ export class IntrusionComponent implements OnInit {
   getIntrusions() {
     this.getProperties()
     this.getDevices()
-    this.intrusionService.getAllIntrusions().subscribe(data => {
+
+    var string_id = localStorage.getItem('owner')
+    var id = string_id == null ? 0 : +string_id 
+
+    this.intrusionService.getIntrusionsByOwnerID(id).subscribe(data => {
       this.dataSource.data = data;
       this.dataSource.data.forEach(element => {
         element.building_name = this.properties.get(element.building_id)!.name;

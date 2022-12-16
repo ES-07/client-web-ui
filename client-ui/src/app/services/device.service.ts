@@ -15,4 +15,8 @@ export class DeviceService {
         return this.http.get<Device[]>(environment.SITES_API + "/devices");
     }
 
+    getDevicesByBuildingID(id: number) : Observable<Device[]> {
+        return this.http.get<Device[]>(environment.SITES_API + "/devices/building/"+ id);
+    }
+
 }
