@@ -9,16 +9,19 @@ import { Property } from '../classes/Property';
   providedIn: 'root',
 })
 export class OwnerService {
-  
-    constructor(private http: HttpClient) {}
-  
-    getOwnerByID(id: string) : Observable<Owner> {
-        return this.http.get<Owner>(environment.SITES_API + "/owners/cognito/"+ id);
-    }
+  constructor(private http: HttpClient) {}
 
-    getPropertiesByOwnerID(id: string) : Observable<Property[]> {
-        return this.http.get<Property[]>(environment.SITES_API + "/buildings/cognito/"+ id);
-    }
+  getOwnerByID(id: string): Observable<Owner> {
+    return this.http.get<Owner>(
+      environment.SITES_API + '/owners/cognito/' + id
+    );
+  }
+
+  getPropertiesByOwnerID(id: string): Observable<Property[]> {
+    return this.http.get<Property[]>(
+      environment.SITES_API + '/buildings/cognito/' + id
+    );
+  }
 
   updateOwner(id: number, owner: Owner): Observable<Owner> {
     console.log('here');

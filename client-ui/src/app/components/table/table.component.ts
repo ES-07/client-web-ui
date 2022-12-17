@@ -8,38 +8,34 @@ import * as AWS from 'aws-sdk';
 import { Buffer } from 'node:buffer';
 import { ThemePalette } from '@angular/material/core';
 
-
-
-// [FONTE] https://code-maze.com/angular-material-table/ 
-
+// [FONTE] https://code-maze.com/angular-material-table/
 
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
-  styleUrls: ['./table.component.css']
+  styleUrls: ['./table.component.css'],
 })
 export class TableComponent implements OnInit {
   color: ThemePalette = 'primary';
 
-  @Input() displayedColumns! : any;
-  @Input() dataSource! : MatTableDataSource<Intrusion>;
+  @Input() displayedColumns!: any;
+  @Input() dataSource!: MatTableDataSource<Intrusion>;
 
-  @Input() displayedColumns_device! : any;
-  @Input() dataSource_device! : MatTableDataSource<Device>;
+  @Input() displayedColumns_device!: any;
+  @Input() dataSource_device!: MatTableDataSource<Device>;
 
-  @Input() pageSizeOptions : number[] = [];
+  @Input() pageSizeOptions: number[] = [];
 
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
     if (this.pageSizeOptions.length == 0) {
-      this.pageSizeOptions = [2,3,4]
+      this.pageSizeOptions = [2, 3, 4];
     }
   }
-
 
   ngAfterViewInit(): void {
     this.dataSource.sort = this.sort;
@@ -47,52 +43,47 @@ export class TableComponent implements OnInit {
 
     this.dataSource_device.sort = this.sort;
     this.dataSource_device.paginator = this.paginator;
-
   }
 
-  public redirectToDetails = (id: string) => {}
-  public redirectToUpdate = (id: string) => {}
-  public redirectToDelete = (id: string) => {}
+  public redirectToDetails = (id: string) => {};
+  public redirectToUpdate = (id: string) => {};
+  public redirectToDelete = (id: string) => {};
 
   public doFilter = (e: Event) => {
-    let value = (e.target as HTMLInputElement).value
+    let value = (e.target as HTMLInputElement).value;
     this.dataSource.filter = value.trim().toLocaleLowerCase();
-  }
+  };
 
   public doFilter_device = (e: Event) => {
-    let value = (e.target as HTMLInputElement).value
+    let value = (e.target as HTMLInputElement).value;
     this.dataSource_device.filter = value.trim().toLocaleLowerCase();
-  }
+  };
 
-  public downloadVideo(){
-    
-    var AWS = require('aws-sdk'); 
+  public downloadVideo() {
+    var AWS = require('aws-sdk');
 
     AWS.config = new AWS.Config();
-    AWS.config.accessKeyId = "AKIAZRPJNMJUHVTW3GGG";
-    AWS.config.secretAccessKey = "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";
-    AWS.config.region = "eu-west-3";
+    AWS.config.accessKeyId = 'AKIARNDSJR2JH2DXBDOT';
+    AWS.config.secretAccessKey = '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';
+    AWS.config.region = 'eu-west-3';
 
     var s3 = new AWS.S3();
-    
-
 
     var params = {
-      Bucket: 'video-clips-archive-es007',
-      Key: 'record0.mp4'
+      Bucket: 'video-archive-es007',
+      Key: 'record0.mp4',
     };
-    
-    s3.getObject(params, function(err: { stack: any; }, data: any) {
-      if (err){
+
+    s3.getObject(params, function (err: { stack: any }, data: any) {
+      if (err) {
         console.log(err, err.stack);
-      }
-      else{
-        let blob=new Blob([data.Body], {type: data.ContentType});
-        let link=document.createElement('a');
-        link.href=window.URL.createObjectURL(blob);
-        link.download=params.Key;
+      } else {
+        let blob = new Blob([data.Body], { type: data.ContentType });
+        let link = document.createElement('a');
+        link.href = window.URL.createObjectURL(blob);
+        link.download = params.Key;
         link.click();
-      } 
-    })
+      }
+    });
   }
 }

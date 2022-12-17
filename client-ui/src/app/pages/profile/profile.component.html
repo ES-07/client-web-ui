@@ -52,7 +52,7 @@
 
         <div class="row" *ngIf="!editMode">
             <div class="col-sm-6">
-                <p >Phone Number</p>
+                <p> <strong>Phone Number</strong></p>
             </div>
             <div class="col-sm-6">
                 <p class="text-muted mb-0">{{owner.cellphone | slice:0:4}} {{owner.cellphone | slice:4:7}} {{owner.cellphone | slice:7:10}} {{owner.cellphone | slice:10:13}}</p>
@@ -75,13 +75,7 @@
             <div class="col-sm-6">
                 <p> <strong> Notification type <span style="margin-left: 5em;" class="badge badge-warning"> Very soon :)</span></strong> </p>
             </div>
-        </div>
-
-
-        <div class="row" *ngIf="editMode">
-            <div class="col-sm-6">
-                <p> <strong> Notification type <span style="margin-left: 5em;" class="badge badge-warning"> Very soon :)</span></strong> </p>
-            </div>
+            
             <div class="col-sm-5">
                 <select class="form-control" id="notification_type" formControlName="notification_type" >
                     <option  disabled> Select Notification type</option>
@@ -89,6 +83,11 @@
                   </select>
             </div>
         </div>
+
+        <div class="row">
+            <div class="containter">
+                <div class="vertical-center">
+                    <input type="image" width="20" height="20" src=" ../../../assets/img/edit.png" />
 
     </form>  
 
