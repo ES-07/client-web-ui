@@ -1,8 +1,12 @@
 
 <div class="row justify-content-center mt-5">
     <div class="col-lg-8 ">
-        <h1 class="mb-5"> Your Profile </h1>
 
+        <form [formGroup] = "form">
+
+        <h1 class="mb-5"> Your Profile </h1>
+    
+    
         <div class="row">
             <div class="col-sm-6">
                 <p> <strong> Name </strong> </p>
@@ -25,8 +29,8 @@
 
         <hr>
 
-        <div class="row">
-            <div class="col-sm-6">
+        <div class="row" *ngIf="!editMode">
+            <div class="col-sm-6" >
                 <p> <strong> Address </strong>  </p>
             </div>
             <div class="col-sm-6">
@@ -34,10 +38,19 @@
             </div>
         </div>
 
+        <div class="row" *ngIf="editMode">
+            <div class="col-sm-6" >
+                <p> <strong> Address </strong>  </p>
+            </div>
+            <div class="col-sm-6">
+                <input  type="text" name="address" formControlName="address" style="width:90%" placeholder="{{owner.address}}">
+            </div>
+        </div>
+
         <hr>
 
 
-        <div class="row">
+        <div class="row" *ngIf="!editMode">
             <div class="col-sm-6">
                 <p> <strong>Phone Number</strong></p>
             </div>
@@ -46,17 +59,29 @@
             </div>
         </div>
 
+        <div class="row" *ngIf="editMode">
+            <div class="col-sm-6">
+                <p> <strong> Phone Number  </strong> </p>
+            </div>
+            <div class="col-sm-6">
+                <input type="text" name="cellphone" formControlName="cellphone" placeholder="{{owner.cellphone | slice:0:4}} {{owner.cellphone | slice:4:7}} {{owner.cellphone | slice:7:10}} {{owner.cellphone | slice:10:13}}">
+            </div>
+        </div>
+
+
         <hr>
 
-        <div class="row">
+        <div class="row" *ngIf="!editMode">
             <div class="col-sm-6">
                 <p> <strong> Notification type <span style="margin-left: 5em;" class="badge badge-warning"> Very soon :)</span></strong> </p>
             </div>
             
             <div class="col-sm-5">
-                <p class="text-muted mb-0">{{owner.notification_type}}</p>
+                <select class="form-control" id="notification_type" formControlName="notification_type" >
+                    <option  disabled> Select Notification type</option>
+                    
+                  </select>
             </div>
-            
         </div>
 
         <div class="row">
@@ -64,7 +89,42 @@
                 <div class="vertical-center">
                     <input type="image" width="20" height="20" src=" ../../../assets/img/edit.png" />
 
+    </form>  
+
+        <div class="row" >
+            <div class="containter">
+                <div class="col-sm-6">
+                    <div class="mt-3"   *ngIf="!editMode">
+                            <button
+                            mat-button
+                            mat-raised-button
+                            color="primary"
+                            [disabled]="processing"
+                            (click)="edit()">
+                            <ng-container *ngIf="processing"
+                            ><mat-icon><mat-spinner diameter="20"></mat-spinner></mat-icon
+                            ></ng-container>
+                            Edit
+                        </button>            
             </div>
         </div>
+        
+        <div  *ngIf="editMode">
+            <div class="mt-3"   *ngIf="editMode">
+
+            <button
+            mat-button
+            mat-raised-button
+            color="primary"
+            [disabled]="processing"
+            (click)="save()">
+            <ng-container *ngIf="processing"
+              ><mat-icon><mat-spinner diameter="20"></mat-spinner></mat-icon
+            ></ng-container>
+            Save
+          </button>            
+        </div>
     </div>
+                
+
 </div>

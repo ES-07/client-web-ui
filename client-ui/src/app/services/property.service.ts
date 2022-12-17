@@ -9,6 +9,7 @@ import { Property } from '../classes/Property';
   })
 
 export class PropertyService {
+    
     constructor(private http: HttpClient) {}
 
     getAllProperties() : Observable<Property[]> {

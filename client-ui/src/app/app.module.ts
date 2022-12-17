@@ -18,17 +18,19 @@ import { PropertyComponent } from './pages/property/property.component';
 import { LoginComponent } from './pages/login/login.component';
 import { TableComponent } from './components/table/table.component';
 
-import { MatTableModule } from '@angular/material/table'
+import { MatTableModule } from '@angular/material/table';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatInputModule } from '@angular/material/input';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { IntrusionComponent } from './pages/intrusion/intrusion.component';
-import { ProfileComponent } from './pages/profile/profile.component'
+import { ProfileComponent } from './pages/profile/profile.component';
 import { CanActivateGuard } from './can-activate.guard';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
-import { MatSlideToggleModule } from '@angular/material/slide-toggle'
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 @NgModule({
   declarations: [
@@ -61,14 +63,14 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle'
     MatInputModule,
     FlexLayoutModule,
     HttpClientModule,
-    MatSlideToggleModule
+    MatProgressSpinnerModule,
+    ReactiveFormsModule,
+    FormsModule,
+
+    MatSlideToggleModule,
   ],
-  exports: [
-    MatSortModule,
-    MatInputModule,
-    MatFormFieldModule
-  ],
+  exports: [MatSortModule, MatInputModule, MatFormFieldModule],
   providers: [CanActivateGuard],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
