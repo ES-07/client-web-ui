@@ -29,8 +29,6 @@ jobs:
         run: npm install
       - name: NPM Install Angular
         run: npm install -g @angular/cli > /dev/null
-      - name: NPM build Angular Production
-        run: npm run build:prod
   
   continuous-deployment:
 
@@ -56,7 +54,7 @@ jobs:
     - name: Build, tag, and push image to Amazon ECR
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-        ECR_REPOSITORY: client-web-ui
+        ECR_REPOSITORY: client-ui
         IMAGE_TAG: latest
       run: |
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
