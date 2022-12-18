@@ -1,6 +1,6 @@
 export const environment = {
   production: false,
-  SITES_API: 'http://alb-643791497.eu-west-3.elb.amazonaws.com/sites-management-api',
+  SITES_API: 'http://alb-924031478.eu-west-3.elb.amazonaws.com/sites-management-api',
   cognito: {
     region : 'eu-west-3',
     userPoolId : 'eu-west-3_jf78B1lET',
