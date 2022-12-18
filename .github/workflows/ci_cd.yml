@@ -25,6 +25,11 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
+      # Setup enviroment variables
+      - run: node serve.js
+        env:
+          AWS_CLIENT_UI: '${{ secrets.AWS_CLIENT_UI }}'
+          
       - name: NPM Install
         run: npm install
       - name: NPM Install Angular

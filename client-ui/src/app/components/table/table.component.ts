@@ -7,6 +7,7 @@ import { Intrusion } from 'src/app/classes/Intrusion';
 import * as AWS from 'aws-sdk';
 import { Buffer } from 'node:buffer';
 import { ThemePalette } from '@angular/material/core';
+import { environment } from 'src/environments/environment';
 
 // [FONTE] https://code-maze.com/angular-material-table/
 
@@ -63,9 +64,9 @@ export class TableComponent implements OnInit {
     var AWS = require('aws-sdk');
 
     AWS.config = new AWS.Config();
-    AWS.config.accessKeyId = 'AKIARNDSJR2JH2DXBDOT';
-    AWS.config.secretAccessKey = '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';
-    AWS.config.region = 'eu-west-3';
+    AWS.config.accessKeyId = environment.accessKeyId;
+    AWS.config.secretAccessKey =  environment.secretAccessKey;
+    AWS.config.region = environment.secretAccessKey;
 
     var s3 = new AWS.S3();
 

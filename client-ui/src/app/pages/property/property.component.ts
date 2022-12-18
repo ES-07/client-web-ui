@@ -61,7 +61,7 @@ export class PropertyComponent implements OnInit {
 
     this.displayedColumns_device = ['Property', 'Device', 'Specifications', 'Status'];
 
-    this.deviceService.getDevicesByBuildingID(id).subscribe(data => {
+    this.deviceService.getDevicesByBuildingID(property_id).subscribe(data => {
       this.dataSource_device.data = data
 
       this.dataSource_device.data.forEach(element => {

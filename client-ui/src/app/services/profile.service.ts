@@ -12,7 +12,7 @@ export class ProfileService{
   constructor(private http: HttpClient) { }
 
   getOwnerData(id: string)  : Observable<Owner> {
-    return this.http.get<Owner>(environment.SITES_API +'owners/cognito/'+ id);
+    return this.http.get<Owner>(environment.SITES_API +'/owners/cognito/'+ id);
   }
   
 }
