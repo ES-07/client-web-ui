@@ -16,8 +16,8 @@ export const environment = {
       }
     }
   },
-  accessKeyId: 'AKIARNDSJR2JHDUDT7KB',
-  secretAccessKey: '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',
+  accessKeyId: 'AKIARNDSJR2JCT7IJCWI',
+  secretAccessKey: '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',
   region : 'eu-west-3',
 
 };
